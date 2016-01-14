@@ -18,12 +18,7 @@ buildscript {
 
 allprojects {
     repositories {
-        // unable to find jackson-databind:2.7.0-rc2 in JCenter
-        mavenCentral()
         jcenter()
-        maven {
-            url 'https://oss.sonatype.org/content/repositories/snapshots'
-        }
     }
 }
 
