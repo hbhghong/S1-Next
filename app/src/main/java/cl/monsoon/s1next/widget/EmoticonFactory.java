@@ -8,7 +8,7 @@ import com.google.common.collect.ImmutableList;
 import java.util.List;
 
 import cl.monsoon.s1next.R;
-import cl.monsoon.s1next.data.api.model.Emoticon;
+import cl.monsoon.s1next.data.api.model.artificial.Emoticon;
 
 /**
  * A factory provides emotions.

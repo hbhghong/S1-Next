@@ -1,4 +1,4 @@
-package cl.monsoon.s1next.data.api.model;
+package cl.monsoon.s1next.data.api.model.artificial;
 
 import android.util.Pair;
 

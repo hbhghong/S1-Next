@@ -1,11 +1,23 @@
-package cl.monsoon.s1next.data.api;
+package cl.monsoon.s1next.data.api.typeadapter;
 
-public final class DiscuzMessageFormatter {
+import com.squareup.moshi.FromJson;
+import com.squareup.moshi.ToJson;
+
+public final class AndroidMessageAdapter {
 
     private static final String FULLWIDTH_COMMA = "，";
     private static final String FULLWIDTH_FULL_STOP = "。";
 
-    private DiscuzMessageFormatter() {}
+    @FromJson
+    @AndroidMessage
+    public String fromJson(String message) {
+        return addFullStopIfNeeded(message);
+    }
+
+    @ToJson
+    public String toJson(@AndroidMessage String message) {
+        throw new UnsupportedOperationException();
+    }
 
     /**
      * We need to add a full stop after a non-single sentence.

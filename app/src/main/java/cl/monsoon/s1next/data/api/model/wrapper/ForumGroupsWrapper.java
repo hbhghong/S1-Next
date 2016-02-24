@@ -1,24 +1,21 @@
 package cl.monsoon.s1next.data.api.model.wrapper;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.common.base.Objects;
+import com.squareup.moshi.Json;
 
 import cl.monsoon.s1next.data.api.model.collection.ForumGroups;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
 public final class ForumGroupsWrapper {
 
-    @JsonProperty("Variables")
+    @Json(name = "Variables")
     private ForumGroups forumGroups;
+
+    public ForumGroupsWrapper(ForumGroups forumGroups) {
+        this.forumGroups = forumGroups;
+    }
 
     public ForumGroups getForumGroups() {
         return forumGroups;
-    }
-
-    @SuppressWarnings("UnusedDeclaration")
-    public void setForumGroups(ForumGroups forumGroups) {
-        this.forumGroups = forumGroups;
     }
 
     @Override

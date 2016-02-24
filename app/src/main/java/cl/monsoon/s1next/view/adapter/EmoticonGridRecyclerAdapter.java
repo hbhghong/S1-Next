@@ -14,7 +14,7 @@ import java.util.List;
 
 import cl.monsoon.s1next.App;
 import cl.monsoon.s1next.R;
-import cl.monsoon.s1next.data.api.model.Emoticon;
+import cl.monsoon.s1next.data.api.model.artificial.Emoticon;
 import cl.monsoon.s1next.databinding.ItemEmoticonBinding;
 import cl.monsoon.s1next.viewmodel.EmoticonViewModel;
 import cl.monsoon.s1next.widget.EventBus;

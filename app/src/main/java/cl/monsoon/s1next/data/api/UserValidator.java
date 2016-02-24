@@ -3,12 +3,8 @@ package cl.monsoon.s1next.data.api;
 import android.text.TextUtils;
 
 import cl.monsoon.s1next.data.User;
-import cl.monsoon.s1next.data.api.model.Account;
-import cl.monsoon.s1next.data.api.model.wrapper.FavouritesWrapper;
-import cl.monsoon.s1next.data.api.model.wrapper.ForumGroupsWrapper;
-import cl.monsoon.s1next.data.api.model.wrapper.PostsWrapper;
+import cl.monsoon.s1next.data.api.typeadapter.OriginalAccountInfo;
 import cl.monsoon.s1next.data.api.model.wrapper.ResultWrapper;
-import cl.monsoon.s1next.data.api.model.wrapper.ThreadsWrapper;
 
 public final class UserValidator {
 
@@ -29,21 +25,22 @@ public final class UserValidator {
      * @return Original data.
      */
     public <D> D validateIntercept(D d) {
-        Account account = null;
-        if (d instanceof PostsWrapper) {
-            account = ((PostsWrapper) d).getPosts();
-        } else if (d instanceof ThreadsWrapper) {
-            account = ((ThreadsWrapper) d).getThreads();
-        } else if (d instanceof ForumGroupsWrapper) {
-            account = ((ForumGroupsWrapper) d).getForumGroups();
-        } else if (d instanceof FavouritesWrapper) {
-            account = ((FavouritesWrapper) d).getFavourites();
-        } else if (d instanceof ResultWrapper) {
-            account = ((ResultWrapper) d).getAccount();
+        OriginalAccountInfo originalAccountInfo = null;
+//        if (d instanceof PostsWrapper) {
+//            originalAccountInfo = ((PostsWrapper) d).getPosts();
+//        } else if (d instanceof ThreadsWrapper) {
+//            originalAccountInfo = ((ThreadsWrapper) d).getThreadsCount();
+//        } else if (d instanceof ForumGroupsWrapper) {
+//            originalAccountInfo = ((ForumGroupsWrapper) d).getForumGroups();
+//        } else if (d instanceof FavouritesWrapper) {
+//            originalAccountInfo = ((FavouritesWrapper) d).getFavourites();
+//        } else
+if (d instanceof ResultWrapper) {
+            originalAccountInfo = ((ResultWrapper) d).getOriginalAccountInfo();
         }
 
-        if (account != null) {
-            validate(account);
+        if (originalAccountInfo != null) {
+            validate(originalAccountInfo);
         }
 
         return d;
@@ -52,25 +49,25 @@ public final class UserValidator {
     /**
      * Checks current user's login status and updates {@link User}'s in our app.
      */
-    public void validate(Account account) {
-        final boolean logged = mUser.isLogged();
-        String uid = account.getUid();
-        if (INVALID_UID.equals(uid) || TextUtils.isEmpty(uid)) {
-            if (logged) {
-                // if account has expired
-                mUser.setUid(null);
-                mUser.setName(null);
-                mUser.setLogged(false);
-            }
-        } else {
-            if (!logged) {
-                // if account has logged
-                mUser.setUid(uid);
-                mUser.setName(account.getUsername());
-                mUser.setLogged(true);
-            }
-        }
-        mUser.setPermission(account.getPermission());
-        mUser.setAuthenticityToken(account.getAuthenticityToken());
+    public void validate(OriginalAccountInfo originalAccountInfo) {
+//        final boolean logged = mUser.isLogged();
+//        String uid = originalAccountInfo.getUid();
+//        if (INVALID_UID.equals(uid) || TextUtils.isEmpty(uid)) {
+//            if (logged) {
+//                // if originalAccountInfo has expired
+//                mUser.setUid(null);
+//                mUser.setName(null);
+//                mUser.setLogged(false);
+//            }
+//        } else {
+//            if (!logged) {
+//                // if originalAccountInfo has logged
+//                mUser.setUid(uid);
+//                mUser.setName(originalAccountInfo.getUsername());
+//                mUser.setLogged(true);
+//            }
+//        }
+//        mUser.setPermission(originalAccountInfo.getPermission());
+//        mUser.setAuthenticityToken(originalAccountInfo.getAuthenticityToken());
     }
 }

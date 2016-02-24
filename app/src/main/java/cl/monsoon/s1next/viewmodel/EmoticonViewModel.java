@@ -3,7 +3,7 @@ package cl.monsoon.s1next.viewmodel;
 import android.databinding.ObservableField;
 import android.view.View;
 
-import cl.monsoon.s1next.data.api.model.Emoticon;
+import cl.monsoon.s1next.data.api.model.artificial.Emoticon;
 import cl.monsoon.s1next.data.event.EmoticonClickEvent;
 import cl.monsoon.s1next.widget.EventBus;
 

@@ -41,8 +41,8 @@ public final class LoginDialogFragment extends ProgressDialogFragment<ResultWrap
         String password = getArguments().getString(ARG_PASSWORD);
         return mS1Service.login(username, password).map(resultWrapper -> {
             // the authenticity token is not fresh after login
-            resultWrapper.getAccount().setAuthenticityToken(null);
-            mUserValidator.validate(resultWrapper.getAccount());
+//            resultWrapper.getOriginalAccountInfo().setAuthenticityToken(null);
+            mUserValidator.validate(resultWrapper.getOriginalAccountInfo());
             return resultWrapper;
         });
     }
